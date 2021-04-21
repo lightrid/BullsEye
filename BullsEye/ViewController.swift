@@ -9,27 +9,48 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var currentValue = 0
+    var currentValue: Float = 0
+    var targetValue = 0
+    
+    @IBOutlet weak var slider: UISlider!
     
     @IBAction func sliderMoved(_ sender: UISlider) {
-        print("The value of the slider is now: \(sender.value)")
+        currentValue = sender.value
+        
     }
     
     @IBAction func showAlert() {
-        let alert = UIAlertController(title: "Hello, World", message: "This is my first app", preferredStyle: .alert)
+        let message = "The value of the slider is: \(Int(currentValue))" +
+            "\nThe target value is: \(targetValue)"
+
         
-        let action = UIAlertAction(title: "Awesome", style: .default, handler: nil)
+        let alert = UIAlertController(title: "Hello, World",
+                                      message: message,
+                                      preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "OK",
+                                   style: .default,
+                                   handler: nil)
         
         alert.addAction(action)
         
-        present(alert, animated: true, completion: nil)
+        present(alert,
+                animated: true,
+                completion: nil)
+        
+        startNewRound()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        currentValue = 50
+        startNewRound()
     }
-
-
+    
+    func startNewRound() {
+        targetValue = Int.random(in: 1...100)
+        slider.value = Float(currentValue)
+    }
+    
 }
 
