@@ -20,6 +20,7 @@ class AboutViewController: UIViewController {
     // MARK: - Navigation
     @IBAction func close() {
         dismiss(animated: true, completion: nil)
+        
     }
     
 }
