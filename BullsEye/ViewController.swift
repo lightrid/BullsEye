@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     var currentValue: Float = 0
     var targetValue = 0
     var score = 0
@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         let difference = abs(Int(currentValue) - targetValue)
         var points = 100 - difference
         let title: String
-       
+        
         var message = "You scored \(points) points"
         
         switch difference {
@@ -60,27 +60,27 @@ class ViewController: UIViewController {
         present(alert,
                 animated: true,
                 completion: nil)
- 
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let thumbImageNormal = UIImage(named: "SliderThumb-Normal")!
         slider.setThumbImage(thumbImageNormal, for: .normal)
-
+        
         let thumbImageHighlighted = UIImage(named: "SliderThumb-Highlighted")!
         slider.setThumbImage(thumbImageHighlighted, for: .highlighted)
-
+        
         let insets = UIEdgeInsets(top: 0, left: 14, bottom: 0, right: 14)
-
+        
         let trackLeftImage = UIImage(named: "SliderTrackLeft")!
         let trackLeftResizable =
-                         trackLeftImage.resizableImage(withCapInsets: insets)
+            trackLeftImage.resizableImage(withCapInsets: insets)
         slider.setMinimumTrackImage(trackLeftResizable, for: .normal)
-
+        
         let trackRightImage = UIImage(named: "SliderTrackRight")!
         let trackRightResizable =
-                         trackRightImage.resizableImage(withCapInsets: insets)
+            trackRightImage.resizableImage(withCapInsets: insets)
         slider.setMaximumTrackImage(trackRightResizable, for: .normal)
         
         startNewGame()
@@ -98,6 +98,13 @@ class ViewController: UIViewController {
         round = 0
         currentValue = 50
         startNewRound()
+        
+        let transition = CATransition()
+        transition.type = CATransitionType.fade
+        transition.duration = 1
+        transition.timingFunction = CAMediaTimingFunction(name:
+                                                            CAMediaTimingFunctionName.easeOut)
+        view.layer.add(transition, forKey: nil)
     }
     
     func updateLabels() {
