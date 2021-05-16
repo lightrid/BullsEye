@@ -47,19 +47,13 @@ class ViewController: UIViewController {
         
         score += points
         
-        let alert = UIAlertController(title: title,
-                                      message: message,
-                                      preferredStyle: .alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let action = UIAlertAction(title: "OK",
-                                   style: .default,
-                                   handler: {_ in self.startNewRound()})
+        let action = UIAlertAction(title: "OK", style: .default, handler: {_ in self.startNewRound()})
         
         alert.addAction(action)
         
-        present(alert,
-                animated: true,
-                completion: nil)
+        present(alert, animated: true, completion: nil)
         
     }
     
@@ -74,13 +68,11 @@ class ViewController: UIViewController {
         let insets = UIEdgeInsets(top: 0, left: 14, bottom: 0, right: 14)
         
         let trackLeftImage = UIImage(named: "SliderTrackLeft")!
-        let trackLeftResizable =
-            trackLeftImage.resizableImage(withCapInsets: insets)
+        let trackLeftResizable = trackLeftImage.resizableImage(withCapInsets: insets)
         slider.setMinimumTrackImage(trackLeftResizable, for: .normal)
         
         let trackRightImage = UIImage(named: "SliderTrackRight")!
-        let trackRightResizable =
-            trackRightImage.resizableImage(withCapInsets: insets)
+        let trackRightResizable = trackRightImage.resizableImage(withCapInsets: insets)
         slider.setMaximumTrackImage(trackRightResizable, for: .normal)
         
         startNewGame()
@@ -102,8 +94,7 @@ class ViewController: UIViewController {
         let transition = CATransition()
         transition.type = CATransitionType.fade
         transition.duration = 1
-        transition.timingFunction = CAMediaTimingFunction(name:
-                                                            CAMediaTimingFunctionName.easeOut)
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
         view.layer.add(transition, forKey: nil)
     }
     
